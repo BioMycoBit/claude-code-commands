@@ -1,0 +1,189 @@
+rules:
+  # --- Scan Group 1: Injection (OWASP A03) ---
+
+  - id: python-sql-injection-fstring
+    pattern-either:
+      - pattern: f"...SELECT ...{$VAR}..."
+      - pattern: f"...INSERT ...{$VAR}..."
+      - pattern: f"...DELETE ...{$VAR}..."
+      - pattern: f"...UPDATE ...{$VAR}..."
+    message: >
+      Possible SQL injection via f-string interpolation of $VAR.
+      Use parameterized queries instead.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A03
+      scan-group: 1
+      audit: audit-security
+
+  - id: python-sql-injection-format
+    pattern-either:
+      - pattern: '"...SELECT ...".format(...)'
+      - pattern: '"...INSERT ...".format(...)'
+      - pattern: '"...DELETE ...".format(...)'
+      - pattern: '"...UPDATE ...".format(...)'
+    message: >
+      Possible SQL injection via .format() string interpolation.
+      Use parameterized queries instead.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A03
+      scan-group: 1
+      audit: audit-security
+
+  - id: python-command-injection
+    pattern-either:
+      - pattern: subprocess.call(...)
+      - pattern: os.system(...)
+      - pattern: os.popen(...)
+    message: >
+      Potential command injection. Use subprocess with a list of arguments
+      instead of shell strings.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A03
+      scan-group: 1
+      audit: audit-security
+
+  - id: python-code-execution
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+    message: >
+      Dynamic code execution via eval/exec. Avoid unless absolutely necessary.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A03
+      scan-group: 1
+      audit: audit-security
+
+  - id: python-template-injection
+    pattern-either:
+      - pattern: render_template_string(...)
+      - pattern: Template($ARG)
+    message: >
+      Potential server-side template injection. Use pre-compiled templates
+      with safe variable binding.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A03
+      scan-group: 1
+      audit: audit-security
+
+  # --- Scan Group 2: XSS (OWASP A03) ---
+
+  - id: react-xss-dangerously-set
+    pattern: dangerouslySetInnerHTML={...}
+    message: >
+      dangerouslySetInnerHTML bypasses React's XSS protection.
+      Sanitize input before rendering.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      owasp: A03
+      scan-group: 2
+      audit: audit-security
+
+  # --- Scan Group 3: Secrets & PII Logging (OWASP A02+A09) ---
+
+  - id: python-hardcoded-secret
+    pattern-either:
+      - pattern: password = "..."
+      - pattern: api_key = "..."
+      - pattern: secret = "..."
+      - pattern: password = '...'
+      - pattern: api_key = '...'
+      - pattern: secret = '...'
+    message: >
+      Hardcoded secret value. Use environment variables or a secrets manager.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A02
+      scan-group: 3
+      audit: audit-security
+
+  - id: python-pii-logging
+    pattern-either:
+      - pattern: logger.$METHOD(..., $OBJ.email, ...)
+      - pattern: logger.$METHOD(..., $OBJ.password, ...)
+      - pattern: logger.$METHOD(..., $OBJ.token, ...)
+      - pattern: logger.$METHOD(..., $OBJ.secret, ...)
+    message: >
+      Sensitive data (PII/secrets) may be logged. Redact before logging.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      owasp: A09
+      scan-group: 3
+      audit: audit-security
+
+  # --- Scan Group 5: Network & Config (OWASP A02+A05) ---
+
+  - id: python-tls-verify-disabled
+    pattern: |
+      $FUNC(..., verify=False, ...)
+    message: >
+      TLS certificate verification disabled. This allows MITM attacks.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: A02
+      scan-group: 5
+      audit: audit-security
+
+  - id: python-debug-mode
+    pattern-either:
+      - pattern: DEBUG = True
+      - pattern: debug=True
+    message: >
+      Debug mode enabled. Disable in production to prevent information disclosure.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      owasp: A05
+      scan-group: 5
+      audit: audit-security
+
+  # --- Scan Group 7: Verbose Errors + Path Traversal (OWASP A01+A05) ---
+
+  - id: python-verbose-traceback
+    pattern-either:
+      - pattern: traceback.format_exc(...)
+      - pattern: traceback.print_exc(...)
+    message: >
+      Verbose traceback may leak internal details to users.
+      Log internally, return generic error to client.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      owasp: A05
+      scan-group: 7
+      audit: audit-security
+
+  # --- Section B: IDOR Ownership Patterns ---
+  # NOTE: IDOR ownership checks are too structurally complex for Semgrep
+  # pattern matching (decorator + function body + absence of ownership check).
+  # Keep using Grep tool for Section B IDOR patterns.
+
+  # --- Scan Group 8: Bare Except ---
+
+  - id: python-bare-except
+    pattern: |
+      try:
+          ...
+      except:
+          ...
+    message: >
+      Bare except catches all exceptions including SystemExit and KeyboardInterrupt.
+      Use a specific exception type.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      scan-group: 8
+      audit: audit-security

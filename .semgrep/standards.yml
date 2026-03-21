@@ -1,0 +1,118 @@
+rules:
+  # --- Naming Conventions ---
+
+  - id: python-camelcase-function
+    pattern-regex: "def [a-z]+[A-Z][a-zA-Z]*\\("
+    message: >
+      Python function uses camelCase. Convention is snake_case per PEP 8.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: naming
+      audit: audit-standards
+
+  # --- Exception Handling ---
+
+  - id: python-bare-except
+    pattern: |
+      try:
+          ...
+      except:
+          ...
+    message: >
+      Bare except catches all exceptions including SystemExit.
+      Use a specific exception type.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: exceptions
+      audit: audit-standards
+
+  - id: python-broad-except-no-reraise
+    patterns:
+      - pattern: |
+          try:
+              ...
+          except Exception:
+              ...
+      - pattern-not: |
+          try:
+              ...
+          except Exception:
+              ...
+              raise
+              ...
+    message: >
+      Broad 'except Exception' without re-raise. Narrow exception type
+      or add 'raise' to preserve the error.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: exceptions
+      audit: audit-standards
+
+  - id: ts-empty-catch-block
+    pattern: |
+      try { ... } catch ($E) { }
+    message: >
+      Empty catch block silently swallows errors. Handle the error
+      or re-throw it.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      category: exceptions
+      audit: audit-standards
+
+  # --- Debug Output ---
+
+  - id: python-print-statement
+    pattern: print(...)
+    message: >
+      Use structlog/logging instead of print() for production code.
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: debug-output
+      audit: audit-standards
+    paths:
+      exclude:
+        - "**/tests/**"
+        - "**/*test*"
+        - "**/conftest*"
+
+  - id: ts-console-log
+    pattern: console.log(...)
+    message: >
+      Use a logger service instead of console.log() for production code.
+    languages: [typescript, javascript]
+    severity: INFO
+    metadata:
+      category: debug-output
+      audit: audit-standards
+    paths:
+      exclude:
+        - "**/tests/**"
+        - "**/*.test.*"
+        - "**/*.spec.*"
+
+  # --- Type Annotations ---
+
+  - id: ts-explicit-any
+    pattern-regex: ":\\s*any[\\s,;)>]"
+    message: >
+      Explicit 'any' type annotation. Use a specific type for type safety.
+    languages: [typescript]
+    severity: WARNING
+    metadata:
+      category: type-annotations
+      audit: audit-standards
+
+  - id: ts-as-any-cast
+    pattern: $EXPR as any
+    message: >
+      Casting to 'any' bypasses type checking. Use a specific type assertion.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      category: type-annotations
+      audit: audit-standards

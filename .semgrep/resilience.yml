@@ -1,0 +1,161 @@
+rules:
+  # --- Phase 1: Error Swallowing ---
+
+  - id: python-bare-except-pass
+    pattern: |
+      try:
+          ...
+      except:
+          pass
+    message: >
+      Bare except with pass silently swallows all errors including SystemExit.
+      Use a specific exception type and handle or re-raise.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: python-except-pass
+    pattern: |
+      try:
+          ...
+      except $EXCEPTION:
+          pass
+    message: >
+      Exception $EXCEPTION caught and silently discarded. Add logging or
+      recovery logic, or re-raise if unrecoverable.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: python-broad-except
+    pattern: |
+      try:
+          ...
+      except Exception:
+          ...
+    message: >
+      Broad 'except Exception' catches all runtime errors. Narrow to specific
+      exception types when possible.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: python-broad-except-as
+    pattern: |
+      try:
+          ...
+      except Exception as $E:
+          ...
+    message: >
+      Broad 'except Exception' catches all runtime errors. Narrow to specific
+      exception types when possible.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: ts-empty-catch
+    pattern: |
+      try { ... } catch ($E) { }
+    message: >
+      Empty catch block silently swallows errors. Add error handling,
+      logging, or re-throw.
+    languages: [typescript, javascript]
+    severity: ERROR
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: ts-catch-ignore-promise
+    pattern: |
+      $PROMISE.catch(() => {})
+    message: >
+      Promise error silently ignored. Add error handling or logging.
+    languages: [typescript, javascript]
+    severity: ERROR
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: ts-catch-log-only
+    pattern: |
+      try { ... } catch ($E) { console.log(...); }
+    message: >
+      Catch block only logs to console with no recovery action.
+      Consider re-throwing or providing fallback behavior.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  - id: ts-catch-warn-only
+    pattern: |
+      try { ... } catch ($E) { console.warn(...); }
+    message: >
+      Catch block only logs a warning with no recovery action.
+      Consider re-throwing or providing fallback behavior.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+
+  # --- Phase 2: Timeout Coverage ---
+
+  - id: python-fetch-no-timeout
+    patterns:
+      - pattern-either:
+          - pattern: httpx.get($URL, ...)
+          - pattern: httpx.post($URL, ...)
+          - pattern: httpx.put($URL, ...)
+          - pattern: httpx.delete($URL, ...)
+          - pattern: httpx.patch($URL, ...)
+          - pattern: httpx.request($METHOD, $URL, ...)
+      - pattern-not: httpx.$METHOD($URL, ..., timeout=..., ...)
+    message: >
+      HTTP request without explicit timeout. Add timeout= parameter to
+      prevent indefinite blocking.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      phase: 2
+      audit: audit-resilience
+
+  - id: python-redis-no-timeout
+    patterns:
+      - pattern-either:
+          - pattern: redis.Redis(...)
+          - pattern: redis.StrictRedis(...)
+          - pattern: redis.from_url(...)
+      - pattern-not: redis.$METHOD(..., socket_timeout=..., ...)
+    message: >
+      Redis connection without socket_timeout. Add socket_timeout= to
+      prevent indefinite blocking on connection failure.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      phase: 2
+      audit: audit-resilience
+
+  - id: rust-unwrap-in-non-test
+    pattern: $EXPR.unwrap()
+    message: >
+      .unwrap() will panic on None/Err. Use ? operator or .unwrap_or()
+      for graceful error handling.
+    languages: [rust]
+    severity: WARNING
+    metadata:
+      phase: 1
+      audit: audit-resilience
+    paths:
+      exclude:
+        - "**/tests/**"
+        - "**/*test*"

@@ -1,0 +1,71 @@
+rules:
+  # --- PII Field Detection ---
+
+  - id: python-pii-email-access
+    pattern-either:
+      - pattern: $VAR.email
+      - pattern: email = $EXPR
+    message: >
+      PII field 'email' detected. Ensure GDPR Art. 6 lawful basis
+      and Art. 32 encryption requirements are met.
+    languages: [python]
+    severity: INFO
+    metadata:
+      pii-type: email
+      gdpr: "Art. 6, Art. 32"
+      audit: audit-privacy
+    paths:
+      exclude:
+        - "**/tests/**"
+        - "**/*test*"
+        - "**/conftest*"
+
+  - id: python-pii-password-access
+    pattern-either:
+      - pattern: password = $EXPR
+      - pattern: $OBJ.password
+    message: >
+      Password field detected. Ensure hashing (not plaintext storage)
+      and no logging of password values.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      pii-type: password
+      gdpr: "Art. 32"
+      audit: audit-privacy
+    paths:
+      exclude:
+        - "**/tests/**"
+        - "**/*test*"
+
+  - id: python-pii-logging
+    pattern-either:
+      - pattern: logger.$METHOD(..., $OBJ.email, ...)
+      - pattern: logger.$METHOD(..., $OBJ.password, ...)
+      - pattern: logger.$METHOD(f"...{$OBJ.email}...")
+      - pattern: logger.$METHOD(f"...{$OBJ.password}...")
+    message: >
+      PII may be logged. Redact sensitive data before logging per GDPR Art. 5
+      data minimization principle.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      pii-type: logged-pii
+      gdpr: "Art. 5"
+      audit: audit-privacy
+
+  # --- Cookie/Storage ---
+
+  - id: ts-localstorage-pii
+    pattern-either:
+      - pattern: localStorage.setItem("...", $OBJ.email)
+      - pattern: localStorage.setItem("...", $OBJ.password)
+      - pattern: localStorage.setItem("...", $OBJ.token)
+    message: >
+      PII stored in localStorage. localStorage is accessible to any JS
+      on the page (XSS risk). Use httpOnly cookies for sensitive data.
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      gdpr: "Art. 32"
+      audit: audit-privacy
