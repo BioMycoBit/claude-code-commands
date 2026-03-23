@@ -279,6 +279,7 @@ The `examples/` directory contains starter templates:
 | `rules/tech-debt-patterns.md.example` | Tech debt tracking template with example entries |
 | `rules/user-preferences.md.example` | User preferences template with example entries |
 | `rules/cross-platform-risks.md.example` | Cross-platform risk registry with anti-pattern table |
+| `sprint-overview.md.example` | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
 
 ### Setup for a New Project
 
