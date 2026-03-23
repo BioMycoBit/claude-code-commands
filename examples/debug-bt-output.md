@@ -11,7 +11,7 @@ These are NOT `console.log('test passed')` scripts. They produce structured, sec
 
 ## JavaScript Example: Browser Console
 
-The following script verifies the login rate limiting implementation from the [handoff example](handoff.md.example). Paste it into the browser's DevTools console (F12 → Console tab).
+The following script verifies the login rate limiting implementation from the [handoff example](handoff.example.md). Paste it into the browser's DevTools console (F12 → Console tab).
 
 ```javascript
 /**

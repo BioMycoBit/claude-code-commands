@@ -10,7 +10,7 @@ The commands read `CLAUDE.md` in your project root for context. This file tells 
 
 **Start from the template:**
 ```bash
-cp examples/CLAUDE.md.example CLAUDE.md
+cp examples/CLAUDE.md.example.md CLAUDE.md
 ```
 
 **Key sections to customize:**

@@ -273,14 +273,14 @@ The `examples/` directory contains starter templates:
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md.example` | Minimal project instructions file — copy to your project root as `CLAUDE.md` |
-| `rules/debugging-patterns.md.example` | Debugging pattern template with example entries |
-| `rules/codebase-quirks.md.example` | Codebase quirks template with example entries |
-| `rules/tech-debt-patterns.md.example` | Tech debt tracking template with example entries |
-| `rules/user-preferences.md.example` | User preferences template with example entries |
-| `rules/cross-platform-risks.md.example` | Cross-platform risk registry with anti-pattern table |
-| `sprint-overview.md.example` | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
-| `handoff.md.example` | Example `/implement` input — handoff document with goal, context, tasks, files table, success criteria, stop conditions |
+| `CLAUDE.md.example.md` | Minimal project instructions file — copy to your project root as `CLAUDE.md` |
+| `rules/debugging-patterns.example.md` | Debugging pattern template with example entries |
+| `rules/codebase-quirks.example.md` | Codebase quirks template with example entries |
+| `rules/tech-debt-patterns.example.md` | Tech debt tracking template with example entries |
+| `rules/user-preferences.example.md` | User preferences template with example entries |
+| `rules/cross-platform-risks.example.md` | Cross-platform risk registry with anti-pattern table |
+| `sprint-overview.example.md` | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
+| `handoff.example.md` | Example `/implement` input — handoff document with goal, context, tasks, files table, success criteria, stop conditions |
 | `debug-bt-output.md` | Example `/debug-bt` output — JavaScript (console.table) and Python (terminal) test scripts with color-coded PASS/FAIL |
 
 ### Setup for a New Project
@@ -291,13 +291,13 @@ cp -r .claude/commands/ /path/to/your-project/.claude/commands/
 cp -r .semgrep/ /path/to/your-project/.semgrep/
 
 # 2. Create your CLAUDE.md (use the example as a starting point)
-cp examples/CLAUDE.md.example /path/to/your-project/CLAUDE.md
+cp examples/CLAUDE.md.example.md /path/to/your-project/CLAUDE.md
 # Edit CLAUDE.md with your project name, stack, lint commands, etc.
 
 # 3. Create rules directory with starter templates
 mkdir -p /path/to/your-project/.claude/rules/
-for f in examples/rules/*.example; do
-  cp "$f" "/path/to/your-project/.claude/rules/$(basename "$f" .example)"
+for f in examples/rules/*.example.md; do
+  cp "$f" "/path/to/your-project/.claude/rules/$(basename "$f" .example.md).md"
 done
 # Clear the example entries and start fresh
 
