@@ -281,6 +281,7 @@ The `examples/` directory contains starter templates:
 | `rules/cross-platform-risks.md.example` | Cross-platform risk registry with anti-pattern table |
 | `sprint-overview.md.example` | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
 | `handoff.md.example` | Example `/implement` input — handoff document with goal, context, tasks, files table, success criteria, stop conditions |
+| `debug-bt-output.md` | Example `/debug-bt` output — JavaScript (console.table) and Python (terminal) test scripts with color-coded PASS/FAIL |
 
 ### Setup for a New Project
 
