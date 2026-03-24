@@ -123,34 +123,9 @@ The following script verifies the login rate limiting implementation from the [h
 
 When pasted into Chrome/Firefox DevTools, the output renders as:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  S03: Login Rate Limiting — v1.3 Auth System               │  ← green banner
-└─────────────────────────────────────────────────────────────┘
-
-IP Limit                                                        ← yellow section header
-┌─────┬──────────────────────────────┬────────┬──────────────┐
-│     │ name                         │ result │ detail       │  ← console.table()
-├─────┼──────────────────────────────┼────────┼──────────────┤
-│  0  │ Attempt 1/5 returns 401      │ PASS   │ status=401   │
-│  1  │ Attempt 2/5 returns 401      │ PASS   │ status=401   │
-│  2  │ Attempt 3/5 returns 401      │ PASS   │ status=401   │
-│  3  │ Attempt 4/5 returns 401      │ PASS   │ status=401   │
-│  4  │ Attempt 5/5 returns 401      │ PASS   │ status=401   │
-│  5  │ 6th attempt returns 429      │ PASS   │ status=429   │
-└─────┴──────────────────────────────┴────────┴──────────────┘
-
-Headers
-┌─────┬──────────────────────────────┬────────┬──────────────┐
-│  0  │ Retry-After header present   │ PASS   │ 892s         │
-│  1  │ Retry-After is numeric       │ PASS   │ value="892"  │
-│  2  │ Retry-After > 0              │ PASS   │ 892s remain  │
-└─────┴──────────────────────────────┴────────┴──────────────┘
-
-...
-
-10/10 passed, 0 failed                                          ← green summary
-```
+<p align="center">
+  <img src="../assets/console-output.svg" alt="Browser DevTools console output showing a green banner, yellow section headers, console.table with PASS results for IP Limit and Headers sections, and a green 10/10 passed summary." width="700" />
+</p>
 
 Key features:
 - **Green banner** with rounded corners (CSS `border-radius` via `%c` formatting)
@@ -252,36 +227,15 @@ sys.exit(0 if passed == len(results) else 1)
 
 ### What the Terminal Output Looks Like
 
-```
-========================================================
-            S03: Login Rate Limiting
-========================================================
-  ✓ Attempt 1/5 returns 401 — status=401
-  ✓ Attempt 2/5 returns 401 — status=401
-  ✓ Attempt 3/5 returns 401 — status=401
-  ✓ Attempt 4/5 returns 401 — status=401
-  ✓ Attempt 5/5 returns 401 — status=401
-  ✓ 6th attempt returns 429 — status=429
-  ✓ Retry-After header present — 892s
-  ✓ Retry-After is numeric — value="892"
-  ✓ Retry-After > 0 — 892s remaining
-  ✓ 429 body has error detail — Too many login attempts
-  ✓ Error mentions rate limit — "Too many login attempts"
-  ✓ Password reset endpoint still works — status=200
-========================================================
-  12/12 passed                                            ← green (ANSI \033[92m)
-```
+<p align="center">
+  <img src="../assets/terminal-pass.svg" alt="Terminal output showing all 12 tests passing with green checkmarks and a green 12/12 passed summary." width="620" />
+</p>
 
 When failures occur:
 
-```
-  ✓ Attempt 1/5 returns 401 — status=401
-  ...
-  ✗ 6th attempt returns 429 — status=401                  ← ✗ marks failures
-  ✗ Retry-After header present — missing
-========================================================
-  10/12 passed                                            ← red (ANSI \033[91m)
-```
+<p align="center">
+  <img src="../assets/terminal-fail.svg" alt="Terminal output showing failures with red X marks on 6th attempt and Retry-After tests, and a red 10/12 passed summary." width="620" />
+</p>
 
 Key features:
 - **Centered header** with `=` divider lines

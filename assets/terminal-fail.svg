@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" width="620" height="200">
+  <rect width="620" height="200" rx="10" fill="#1a1a1a"/>
+
+  <!-- Terminal title bar -->
+  <rect x="0" y="0" width="620" height="32" rx="10" fill="#2d2d2d"/>
+  <rect x="0" y="16" width="620" height="16" fill="#2d2d2d"/>
+  <circle cx="18" cy="14" r="5.5" fill="#ff5f57"/>
+  <circle cx="36" cy="14" r="5.5" fill="#febc2e"/>
+  <circle cx="54" cy="14" r="5.5" fill="#28c840"/>
+  <text x="310" y="19" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#999">Terminal — failures</text>
+
+  <!-- Some pass lines -->
+  <text x="30" y="58" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#4ec9b0">&#x2713;</text>
+  <text x="48" y="58" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#c8c8c8">Attempt 1/5 returns 401 &#x2014; status=401</text>
+
+  <!-- Ellipsis -->
+  <text x="30" y="78" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#666">  ...</text>
+
+  <!-- Fail lines -->
+  <text x="30" y="102" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#f14c4c">&#x2717;</text>
+  <text x="48" y="102" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#c8c8c8">6th attempt returns 429 &#x2014;</text>
+  <text x="340" y="102" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#f14c4c">status=401</text>
+
+  <text x="30" y="122" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#f14c4c">&#x2717;</text>
+  <text x="48" y="122" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#c8c8c8">Retry-After header present &#x2014;</text>
+  <text x="340" y="122" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#f14c4c">missing</text>
+
+  <!-- Footer bar -->
+  <text x="20" y="150" font-family="'SF Mono',Consolas,monospace" font-size="13" fill="#b0b0b0">========================================================</text>
+
+  <!-- Summary in red -->
+  <text x="30" y="174" font-family="'SF Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#f14c4c">  10/12 passed</text>
+</svg>

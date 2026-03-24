@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" width="700" height="420">
+  <rect width="700" height="420" rx="10" fill="#1e1e1e"/>
+
+  <!-- Chrome DevTools title bar -->
+  <rect x="0" y="0" width="700" height="32" rx="10" fill="#2d2d2d"/>
+  <rect x="0" y="16" width="700" height="16" fill="#2d2d2d"/>
+  <circle cx="18" cy="14" r="5.5" fill="#ff5f57"/>
+  <circle cx="36" cy="14" r="5.5" fill="#febc2e"/>
+  <circle cx="54" cy="14" r="5.5" fill="#28c840"/>
+  <text x="350" y="19" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#999">Console</text>
+
+  <!-- Green banner -->
+  <rect x="16" y="44" width="420" height="26" rx="4" fill="#4CAF50"/>
+  <text x="26" y="62" font-family="'SF Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#fff">S03: Login Rate Limiting — v1.3 Auth System</text>
+
+  <!-- Section: IP Limit -->
+  <text x="16" y="95" font-family="'SF Mono',Consolas,monospace" font-size="12" font-weight="700" fill="#ff0">IP Limit</text>
+
+  <!-- Table header -->
+  <rect x="16" y="104" width="560" height="22" rx="0" fill="#2a2a3a"/>
+  <text x="30" y="118" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">(index)</text>
+  <text x="100" y="118" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">name</text>
+  <text x="370" y="118" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">result</text>
+  <text x="450" y="118" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">detail</text>
+
+  <!-- Row 0 -->
+  <rect x="16" y="126" width="560" height="20" fill="#1e1e1e"/>
+  <text x="42" y="140" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">0</text>
+  <text x="100" y="140" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Attempt 1/5 returns 401</text>
+  <text x="370" y="140" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="140" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=401</text>
+
+  <!-- Row 1 -->
+  <rect x="16" y="146" width="560" height="20" fill="#252530"/>
+  <text x="42" y="160" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">1</text>
+  <text x="100" y="160" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Attempt 2/5 returns 401</text>
+  <text x="370" y="160" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="160" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=401</text>
+
+  <!-- Row 2 -->
+  <rect x="16" y="166" width="560" height="20" fill="#1e1e1e"/>
+  <text x="42" y="180" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">2</text>
+  <text x="100" y="180" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Attempt 3/5 returns 401</text>
+  <text x="370" y="180" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="180" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=401</text>
+
+  <!-- Row 3 -->
+  <rect x="16" y="186" width="560" height="20" fill="#252530"/>
+  <text x="42" y="200" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">3</text>
+  <text x="100" y="200" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Attempt 4/5 returns 401</text>
+  <text x="370" y="200" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="200" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=401</text>
+
+  <!-- Row 4 -->
+  <rect x="16" y="206" width="560" height="20" fill="#1e1e1e"/>
+  <text x="42" y="220" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">4</text>
+  <text x="100" y="220" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Attempt 5/5 returns 401</text>
+  <text x="370" y="220" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="220" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=401</text>
+
+  <!-- Row 5 -->
+  <rect x="16" y="226" width="560" height="20" fill="#252530"/>
+  <text x="42" y="240" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">5</text>
+  <text x="100" y="240" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">6th attempt returns 429</text>
+  <text x="370" y="240" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="240" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">status=429</text>
+
+  <!-- Section: Headers -->
+  <text x="16" y="272" font-family="'SF Mono',Consolas,monospace" font-size="12" font-weight="700" fill="#ff0">Headers</text>
+
+  <!-- Table header 2 -->
+  <rect x="16" y="280" width="560" height="22" rx="0" fill="#2a2a3a"/>
+  <text x="30" y="294" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">(index)</text>
+  <text x="100" y="294" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">name</text>
+  <text x="370" y="294" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">result</text>
+  <text x="450" y="294" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#888">detail</text>
+
+  <!-- H Row 0 -->
+  <rect x="16" y="302" width="560" height="20" fill="#1e1e1e"/>
+  <text x="42" y="316" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">0</text>
+  <text x="100" y="316" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Retry-After header present</text>
+  <text x="370" y="316" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="316" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">892s</text>
+
+  <!-- H Row 1 -->
+  <rect x="16" y="322" width="560" height="20" fill="#252530"/>
+  <text x="42" y="336" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">1</text>
+  <text x="100" y="336" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Retry-After is numeric</text>
+  <text x="370" y="336" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="336" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">value="892"</text>
+
+  <!-- H Row 2 -->
+  <rect x="16" y="342" width="560" height="20" fill="#1e1e1e"/>
+  <text x="42" y="356" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">2</text>
+  <text x="100" y="356" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#ce9178">Retry-After > 0</text>
+  <text x="370" y="356" font-family="'SF Mono',Consolas,monospace" font-size="10" font-weight="700" fill="#4ec9b0">PASS</text>
+  <text x="450" y="356" font-family="'SF Mono',Consolas,monospace" font-size="10" fill="#b0b0b0">892s remain</text>
+
+  <!-- Ellipsis -->
+  <text x="16" y="382" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#666">...</text>
+
+  <!-- Summary -->
+  <text x="16" y="406" font-family="'SF Mono',Consolas,monospace" font-size="14" font-weight="700" fill="#4ec9b0">10/10 passed, 0 failed</text>
+</svg>

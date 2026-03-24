@@ -133,24 +133,9 @@ This mirrors how a project manager with multiple teams operates — orchestratin
 
 The core workflow is a loop of four commands:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│   /sprint ──▶ /implement ──▶ /handoff-end ──▶ repeat    │
-│      │              │              │                     │
-│   Creates        Executes       Closes session,         │
-│   sprint plan    one session    creates next handoff     │
-│      │              │              │                     │
-│      │         GEAUX gate      Updates overview          │
-│      │        (approval)       doc tracker               │
-│      │              │              │                     │
-│      └──────────────┴──────────────┘                     │
-│                     │                                    │
-│              /sprint-end                                 │
-│           (closes the sprint)                            │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="assets/workflow-loop.svg" alt="Workflow loop: /sprint creates a plan, /implement executes one session with a GEAUX approval gate, /handoff-end closes the session and creates the next handoff. The loop repeats until /sprint-end closes the sprint." width="720" />
+</p>
 
 ### How It Works
 
@@ -176,12 +161,9 @@ The core workflow is a loop of four commands:
 
 Audits run independently from the sprint cycle. When findings accumulate:
 
-```
-/audit-suite tier1  ──▶  /sprint-from-findings  ──▶  /sprint (remediation)
-     │                         │
-  Runs 5 audits            Extracts top findings
-  in parallel              into a sprint plan
-```
+<p align="center">
+  <img src="assets/audit-loop.svg" alt="Audit loop: /audit-suite runs audits in parallel, /sprint-from-findings extracts top findings, /sprint creates a remediation sprint." width="720" />
+</p>
 
 ---
 

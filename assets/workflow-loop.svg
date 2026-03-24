@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320">
+  <rect width="720" height="320" rx="12" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="360" y="38" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#c0c0d0">The Core Workflow Loop</text>
+
+  <!-- /sprint box -->
+  <rect x="40" y="70" width="140" height="56" rx="8" fill="#2d6a4f" stroke="#52b788" stroke-width="1.5"/>
+  <text x="110" y="95" text-anchor="middle" font-family="'SF Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#b7e4c7">/sprint</text>
+  <text x="110" y="114" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#95d5b2">Creates sprint plan</text>
+
+  <!-- Arrow 1 -->
+  <line x1="180" y1="98" x2="228" y2="98" stroke="#52b788" stroke-width="2"/>
+  <polygon points="228,93 240,98 228,103" fill="#52b788"/>
+
+  <!-- /implement box -->
+  <rect x="240" y="70" width="160" height="56" rx="8" fill="#1b4965" stroke="#5fa8d3" stroke-width="1.5"/>
+  <text x="320" y="95" text-anchor="middle" font-family="'SF Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#a9d6e5">/implement</text>
+  <text x="320" y="114" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#89c2d9">Executes one session</text>
+
+  <!-- Arrow 2 -->
+  <line x1="400" y1="98" x2="448" y2="98" stroke="#5fa8d3" stroke-width="2"/>
+  <polygon points="448,93 460,98 448,103" fill="#5fa8d3"/>
+
+  <!-- /handoff-end box -->
+  <rect x="460" y="70" width="160" height="56" rx="8" fill="#5a1a5e" stroke="#c77dff" stroke-width="1.5"/>
+  <text x="540" y="95" text-anchor="middle" font-family="'SF Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#e0aaff">/handoff-end</text>
+  <text x="540" y="114" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#d0a0ff">Closes session, next handoff</text>
+
+  <!-- Repeat arrow: curves back from /handoff-end down and left to /implement -->
+  <path d="M 540 126 L 540 165 Q 540 180, 525 180 L 335 180 Q 320 180, 320 165 L 320 126" fill="none" stroke="#c77dff" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="315,130 320,118 325,130" fill="#c77dff"/>
+  <text x="430" y="197" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" font-style="italic" fill="#c77dff">repeat</text>
+
+  <!-- GEAUX gate badge on /implement -->
+  <rect x="264" y="133" width="112" height="22" rx="4" fill="#e8871e" opacity="0.9"/>
+  <text x="320" y="148" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#fff">GEAUX gate (approval)</text>
+
+  <!-- Overview update badge on /handoff-end -->
+  <rect x="476" y="133" width="128" height="22" rx="4" fill="#5a1a5e" stroke="#c77dff" stroke-width="1" opacity="0.8"/>
+  <text x="540" y="148" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10" fill="#e0aaff">Updates overview tracker</text>
+
+  <!-- /sprint-end box at bottom -->
+  <rect x="260" y="240" width="200" height="50" rx="8" fill="#3d0814" stroke="#e5383b" stroke-width="1.5"/>
+  <text x="360" y="264" text-anchor="middle" font-family="'SF Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#ff8fa3">/sprint-end</text>
+  <text x="360" y="280" text-anchor="middle" font-family="'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#ff8fa3">Closes the sprint</text>
+
+  <!-- Arrow from loop down to /sprint-end -->
+  <line x1="360" y1="197" x2="360" y2="232" stroke="#e5383b" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="355,232 360,240 365,232" fill="#e5383b"/>
+</svg>
