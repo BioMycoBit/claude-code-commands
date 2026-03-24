@@ -1,15 +1,36 @@
 # Claude Code Commands
 
-A collection of slash commands for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that turn AI-assisted development into a structured, repeatable workflow. Instead of ad-hoc prompting, you get a complete system: sprint planning, implementation with approval gates, 26 code audits, and persistent project memory.
+**A project management workflow for AI-assisted development.**
 
-Built over 50+ sprints on a real production codebase, then extracted and generalized for any project.
+You don't need to know how to code. You need to know how to manage work.
+
+<p align="center">
+  <img src="assets/qr-code.png" alt="QR code — scan to visit this repo" width="200" />
+  <br />
+  <em>Scan to visit this repo</em>
+</p>
+
+---
+
+## The Core Insight
+
+> **You are the project manager. Claude is the workforce.**
+
+This repo contains a complete workflow — 44 slash commands for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — that applies proven project management principles to AI-assisted development. Sprint planning, scoped handoffs, approval gates, parallel workstreams, and persistent project memory.
+
+Coding knowledge matters less than the discipline to structure the work properly. Claude can write the code. It cannot manage itself.
+
+Built over 50+ sprints on a real production codebase (multi-language, 150k+ lines), then extracted and generalized for any project. The person who built it did not write a single line of code.
+
+For the thinking behind this workflow, see [METHODOLOGY.md](METHODOLOGY.md).
 
 ---
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-- [What Are Slash Commands?](#what-are-slash-commands)
+- [The Methodology](#the-methodology)
+- [Why This Works](#why-this-works)
 - [The Workflow](#the-workflow)
 - [Skill Catalog](#skill-catalog)
 - [Audit Suite](#audit-suite)
@@ -24,7 +45,7 @@ Built over 50+ sprints on a real production codebase, then extracted and general
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/yourusername/claude-code-commands.git
+git clone https://github.com/BioMycoBit/claude-code-commands.git
 
 # 2. Copy commands into your project
 cp -r claude-code-commands/.claude/commands/ your-project/.claude/commands/
@@ -44,17 +65,67 @@ Claude Code auto-discovers commands in `.claude/commands/`. No configuration nee
 
 ---
 
-## What Are Slash Commands?
+## The Methodology
 
-Slash commands are markdown files that Claude Code reads as instructions. Instead of explaining how to plan a sprint every time, you write the recipe once in a `.md` file, put it in `.claude/commands/`, and type `/sprint` to run it. Claude reads the recipe and follows each step.
+This is classical project management applied to AI coding:
 
-**Example:** When you type `/sprint auth system`, Claude Code:
-1. Reads `.claude/commands/sprint.md`
-2. Researches your git history, existing docs, and codebase
-3. Generates a sprint plan with numbered sessions
-4. Creates the first handoff document for implementation
+### 1. Plan — Sprint First
+Before doing anything, create a plan. Analyze the codebase, define the goal, break it into numbered sessions. A sprint answers: *What are we building and in what order?*
 
-Each command in this repo encodes a specific workflow pattern — tested across 50+ sprints — so Claude follows a consistent, high-quality process every time.
+### 2. Scope — Handoffs Define the Work
+Break the sprint into self-contained components. Each handoff defines exactly what files will be touched, what success looks like, and **when to stop**. This is where scope creep is eliminated — by design, before implementation begins.
+
+### 3. Approve — GO/NO-GO Gate
+Before any code is written, an approval gate requires you to read and agree to the scope. That single moment of friction prevents most downstream chaos.
+
+### 4. Execute — Claude Implements
+Claude follows the scoped handoff. Linters run. A slop check catches AI anti-patterns. Changes stay contained.
+
+### 5. Document — Close the Session
+The session closes, the sprint tracker updates, the next handoff is created, and the work is committed. The context is clean and the next session has a clear starting point.
+
+### 6. Repeat
+
+---
+
+## Why This Works
+
+### Handoffs Eliminate Scope Creep
+
+Claude is very willing to go wherever you point it — which is a feature that becomes a bug without structure. Without a handoff, sessions sprawl: half-finished features, unintended changes, no clear definition of done.
+
+The handoff makes every session **surgical rather than exploratory**. You go in, do the specific thing, come out.
+
+> **Beginners let Claude roam. The handoff approach makes every session surgical.**
+
+### Context Engineering — Solved Proactively
+
+Most people react to context problems: compacting, summarizing, trying to rescue a bloated session mid-flight. Compaction is lossy — you're working with Claude's compressed interpretation of what mattered.
+
+The sprint/handoff structure solves this proactively. Each session starts **clean, focused, with exactly the right context** — the specific files, the specific goal, nothing else. Fresh context at the beginning of a scoped session is higher quality than compacted context late in a long one.
+
+### Parallel Sessions — Never Waiting
+
+Running 4 sessions simultaneously means you're never idle:
+
+- **Session 1** — Active feature work
+- **Session 2** — Audit (security, tech debt, etc.)
+- **Session 3** — Code cleanup / refactoring
+- **Session 4** — Exploration or next sprint planning
+
+This mirrors how a project manager with multiple teams operates — orchestrating across workstreams simultaneously, never blocked by a single dependency. Tech debt and security reviews — always deprioritized in traditional workflows — run in the background alongside feature work.
+
+### Traditional AI Coding vs This Workflow
+
+| Traditional AI Coding | This Workflow |
+|---|---|
+| Ad-hoc prompting | Structured sprint planning |
+| Sessions sprawl | Scoped handoffs with stop conditions |
+| Wait on Claude | 4 parallel sessions, always reviewing |
+| Context degrades | Fresh context by design each session |
+| Tech debt accumulates | Background sessions run in parallel |
+| Reactive context management | Proactive context engineering |
+| Claude roams | Claude executes, you manage |
 
 ---
 
