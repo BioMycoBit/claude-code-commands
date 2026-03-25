@@ -61,7 +61,7 @@ claude
 /sprint my first feature
 ```
 
-Claude Code auto-discovers commands in `.claude/commands/`. No configuration needed to start — just copy the files.
+Claude Code auto-discovers commands in [`.claude/commands/`](.claude/commands/). No configuration needed to start — just copy the files.
 
 ---
 
@@ -173,59 +173,59 @@ Audits run independently from the sprint cycle. When findings accumulate:
 
 | Command | Purpose |
 |---------|---------|
-| `/sprint` | Generate a sprint plan with architectural analysis, progress tracker, and first handoff |
-| `/implement` | Execute a handoff document with approval gate, lint, slop check, and test generation |
-| `/handoff-end` | Close a session, update the overview tracker, create next handoff, commit |
-| `/sprint-end` | Close a sprint with retrospective insights and archive |
-| `/amplify` | Iterative document refinement through 4 progressive passes |
-| `/sidequest` | Branch a sub-task from a parked session with hierarchical numbering |
-| `/park` | Temporarily set aside a blocked session with return context |
-| `/debug-bt` | Generate test scripts for verifying implementations |
-| `/slop-check` | Scan changed files for AI anti-patterns that linters miss |
-| `/random-sprint` | Collect ad-hoc items interactively, then delegate to `/sprint` |
-| `/pick-findings` | Circle back to audit findings that were initially skipped |
-| `/sprint-from-findings` | Scan audit documents and build a remediation sprint from top findings |
+| [`/sprint`](.claude/commands/sprint.md) | Generate a sprint plan with architectural analysis, progress tracker, and first handoff |
+| [`/implement`](.claude/commands/implement.md) | Execute a handoff document with approval gate, lint, slop check, and test generation |
+| [`/handoff-end`](.claude/commands/handoff-end.md) | Close a session, update the overview tracker, create next handoff, commit |
+| [`/sprint-end`](.claude/commands/sprint-end.md) | Close a sprint with retrospective insights and archive |
+| [`/amplify`](.claude/commands/amplify.md) | Iterative document refinement through 4 progressive passes |
+| [`/sidequest`](.claude/commands/sidequest.md) | Branch a sub-task from a parked session with hierarchical numbering |
+| [`/park`](.claude/commands/park.md) | Temporarily set aside a blocked session with return context |
+| [`/debug-bt`](.claude/commands/debug-bt.md) | Generate test scripts for verifying implementations |
+| [`/slop-check`](.claude/commands/slop-check.md) | Scan changed files for AI anti-patterns that linters miss |
+| [`/random-sprint`](.claude/commands/random-sprint.md) | Collect ad-hoc items interactively, then delegate to `/sprint` |
+| [`/pick-findings`](.claude/commands/pick-findings.md) | Circle back to audit findings that were initially skipped |
+| [`/sprint-from-findings`](.claude/commands/sprint-from-findings.md) | Scan audit documents and build a remediation sprint from top findings |
 
 ### Audit Commands (27)
 
 | Command | What It Checks |
 |---------|---------------|
-| `/audit-suite` | **Orchestrator** — runs all audits in a tier as parallel agents |
-| `/audit-security` | SQL injection, XSS, command injection, secrets, TLS, debug mode |
-| `/audit-secrets` | Git history scanning, .env hygiene, hardcoded credentials |
-| `/audit-dependency` | Version pinning, major version gaps, outdated packages (Python/NPM/Rust) |
-| `/audit-standards` | Linting trends, naming conventions, type annotations, exception handling |
-| `/audit-test-quality` | Test inventory, flaky indicators, mock hygiene, coverage gaps |
-| `/audit-python` | Cyclomatic complexity, maintainability, dead code, hotspot correlation |
-| `/audit-typescript` | Circular dependencies, dead code, type duplication, component health |
-| `/audit-rust` | Clippy pedantic, unwrap audit, dead code, unused PyO3 bindings |
-| `/audit-codesweep` | Copy/paste duplication detection via jscpd |
-| `/audit-resilience` | Error swallowing, missing timeouts, retry gaps, resource cleanup |
-| `/audit-deadcode` | Unused exports, orphan files, uncalled functions |
-| `/audit-regression` | Danger zone mapping, swallowed errors, test gaps for high-churn files |
-| `/audit-performance` | Hot paths, N+1 queries, sequential awaits, unbounded growth |
-| `/audit-docker` | Base image security, container privileges, resource limits, Trivy scanning |
-| `/audit-observability` | Structured logging, correlation IDs, alert coverage, PII in logs |
-| `/audit-pipeline` | Latency budgets, sample rates, buffer management, backpressure |
-| `/audit-privacy` | GDPR/PII lifecycle, data retention, consent tracking, cookie usage |
-| `/audit-modules` | Module boundaries, dependency enforcement (tach/knip) |
-| `/audit-types` | Python type coverage (ty/pyright), TypeScript strict checking (tsc) |
-| `/audit-iac` | Infrastructure config validation (Caddy, Prometheus, Grafana, docker-compose) |
-| `/audit-database` | Schema consistency, query safety, connection patterns, migration safety |
-| `/audit-sbom` | SBOM generation (CycloneDX/SPDX), vulnerability scanning via grype |
-| `/audit-licenses` | GPL/AGPL/copyleft detection across Python, NPM, and Rust dependencies |
-| `/audit-accessibility` | WCAG 2.1 AA: alt text, ARIA, keyboard handlers, focus styles, axe-core |
-| `/audit-browser-compat` | CSS prefixes, modern JS APIs, polyfill checks (Chrome 90+, Firefox 88+, Safari 14+) |
-| `/audit-api-surface` | Endpoint-to-frontend tracing, orphan endpoints, WebSocket message flow mapping |
+| [`/audit-suite`](.claude/commands/audit-suite.md) | **Orchestrator** — runs all audits in a tier as parallel agents |
+| [`/audit-security`](.claude/commands/audit-security.md) | SQL injection, XSS, command injection, secrets, TLS, debug mode |
+| [`/audit-secrets`](.claude/commands/audit-secrets.md) | Git history scanning, .env hygiene, hardcoded credentials |
+| [`/audit-dependency`](.claude/commands/audit-dependency.md) | Version pinning, major version gaps, outdated packages (Python/NPM/Rust) |
+| [`/audit-standards`](.claude/commands/audit-standards.md) | Linting trends, naming conventions, type annotations, exception handling |
+| [`/audit-test-quality`](.claude/commands/audit-test-quality.md) | Test inventory, flaky indicators, mock hygiene, coverage gaps |
+| [`/audit-python`](.claude/commands/audit-python.md) | Cyclomatic complexity, maintainability, dead code, hotspot correlation |
+| [`/audit-typescript`](.claude/commands/audit-typescript.md) | Circular dependencies, dead code, type duplication, component health |
+| [`/audit-rust`](.claude/commands/audit-rust.md) | Clippy pedantic, unwrap audit, dead code, unused PyO3 bindings |
+| [`/audit-codesweep`](.claude/commands/audit-codesweep.md) | Copy/paste duplication detection via jscpd |
+| [`/audit-resilience`](.claude/commands/audit-resilience.md) | Error swallowing, missing timeouts, retry gaps, resource cleanup |
+| [`/audit-deadcode`](.claude/commands/audit-deadcode.md) | Unused exports, orphan files, uncalled functions |
+| [`/audit-regression`](.claude/commands/audit-regression.md) | Danger zone mapping, swallowed errors, test gaps for high-churn files |
+| [`/audit-performance`](.claude/commands/audit-performance.md) | Hot paths, N+1 queries, sequential awaits, unbounded growth |
+| [`/audit-docker`](.claude/commands/audit-docker.md) | Base image security, container privileges, resource limits, Trivy scanning |
+| [`/audit-observability`](.claude/commands/audit-observability.md) | Structured logging, correlation IDs, alert coverage, PII in logs |
+| [`/audit-pipeline`](.claude/commands/audit-pipeline.md) | Latency budgets, sample rates, buffer management, backpressure |
+| [`/audit-privacy`](.claude/commands/audit-privacy.md) | GDPR/PII lifecycle, data retention, consent tracking, cookie usage |
+| [`/audit-modules`](.claude/commands/audit-modules.md) | Module boundaries, dependency enforcement (tach/knip) |
+| [`/audit-types`](.claude/commands/audit-types.md) | Python type coverage (ty/pyright), TypeScript strict checking (tsc) |
+| [`/audit-iac`](.claude/commands/audit-iac.md) | Infrastructure config validation (Caddy, Prometheus, Grafana, docker-compose) |
+| [`/audit-database`](.claude/commands/audit-database.md) | Schema consistency, query safety, connection patterns, migration safety |
+| [`/audit-sbom`](.claude/commands/audit-sbom.md) | SBOM generation (CycloneDX/SPDX), vulnerability scanning via grype |
+| [`/audit-licenses`](.claude/commands/audit-licenses.md) | GPL/AGPL/copyleft detection across Python, NPM, and Rust dependencies |
+| [`/audit-accessibility`](.claude/commands/audit-accessibility.md) | WCAG 2.1 AA: alt text, ARIA, keyboard handlers, focus styles, axe-core |
+| [`/audit-browser-compat`](.claude/commands/audit-browser-compat.md) | CSS prefixes, modern JS APIs, polyfill checks (Chrome 90+, Firefox 88+, Safari 14+) |
+| [`/audit-api-surface`](.claude/commands/audit-api-surface.md) | Endpoint-to-frontend tracing, orphan endpoints, WebSocket message flow mapping |
 
 ### On-Demand Audits (4, not in tiers)
 
 | Command | Purpose |
 |---------|---------|
-| `/audit-dashboard` | Unified health dashboard — reads all recent audits, computes composite scores |
-| `/audit-project-overview` | Project pulse check — version status, recent work, sprint priorities |
-| `/audit-system-walkthrough` | End-to-end data flow tracing through all system layers |
-| `/audit-techdebt` | TODO/FIXME markers, type-safety gaps, large files, backward-compat code |
+| [`/audit-dashboard`](.claude/commands/audit-dashboard.md) | Unified health dashboard — reads all recent audits, computes composite scores |
+| [`/audit-project-overview`](.claude/commands/audit-project-overview.md) | Project pulse check — version status, recent work, sprint priorities |
+| [`/audit-system-walkthrough`](.claude/commands/audit-system-walkthrough.md) | End-to-end data flow tracing through all system layers |
+| [`/audit-techdebt`](.claude/commands/audit-techdebt.md) | TODO/FIXME markers, type-safety gaps, large files, backward-compat code |
 
 ---
 
@@ -268,7 +268,7 @@ Each audit generates a markdown report in `work/` with:
 - **Delta tracking** — new, resolved, carried, and changed findings vs prior run
 - **Tech debt integration** — Critical/High findings auto-append to `.claude/rules/tech-debt-patterns.md`
 
-Audits use [Semgrep](https://semgrep.dev/) (4 custom rule files in `.semgrep/`) for AST-aware pattern matching, plus built-in grep for text patterns.
+Audits use [Semgrep](https://semgrep.dev/) (4 custom rule files in [`.semgrep/`](.semgrep/)) for AST-aware pattern matching, plus built-in grep for text patterns.
 
 ---
 
@@ -277,12 +277,12 @@ Audits use [Semgrep](https://semgrep.dev/) (4 custom rule files in `.semgrep/`) 
 These commands work out of the box for basic use. For project-specific behavior (custom lint commands, target directories, tech stack), see **[CONFIGURATION.md](CONFIGURATION.md)**.
 
 Key configuration points:
-- **CLAUDE.md** — Your project instructions file that commands read for context
+- **[CLAUDE.md](examples/CLAUDE.md.example.md)** — Your project instructions file that commands read for context
 - **`.claude/rules/`** — Persistent knowledge base files (debugging patterns, tech debt, quirks)
 - **Lint commands** — Configure in CLAUDE.md; `/implement` reads them for the lint step
 - **Semgrep rules** — Customize `.semgrep/*.yml` for your codebase patterns
 
-The `examples/` directory includes starter templates for all of these.
+The [`examples/`](examples/) directory includes starter templates for all of these.
 
 ---
 
@@ -294,11 +294,11 @@ The commands use a file-based knowledge system in `.claude/rules/` that persists
 
 | File | Purpose | Cap |
 |------|---------|-----|
-| `debugging-patterns.md` | Known failure modes: symptom → fix | 200 lines |
-| `codebase-quirks.md` | Import patterns, gotchas, workarounds | 150 lines |
-| `tech-debt-patterns.md` | Audit findings awaiting remediation | 100 lines |
-| `user-preferences.md` | Communication style, workflow preferences | 50 lines |
-| `cross-platform-risks.md` | Platform-specific anti-patterns and alternatives | 100 lines |
+| [`debugging-patterns.md`](examples/rules/debugging-patterns.example.md) | Known failure modes: symptom → fix | 200 lines |
+| [`codebase-quirks.md`](examples/rules/codebase-quirks.example.md) | Import patterns, gotchas, workarounds | 150 lines |
+| [`tech-debt-patterns.md`](examples/rules/tech-debt-patterns.example.md) | Audit findings awaiting remediation | 100 lines |
+| [`user-preferences.md`](examples/rules/user-preferences.example.md) | Communication style, workflow preferences | 50 lines |
+| [`cross-platform-risks.md`](examples/rules/cross-platform-risks.example.md) | Platform-specific anti-patterns and alternatives | 100 lines |
 
 ### How It Works
 
@@ -316,7 +316,7 @@ One-line description of the issue.
 **Resolve:** Specific action needed to fix.
 ```
 
-Starter templates with examples are in `examples/rules/`.
+Starter templates with examples are in [`examples/rules/`](examples/rules/).
 
 ---
 
@@ -326,15 +326,15 @@ The `examples/` directory contains starter templates:
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md.example.md` | Minimal project instructions file — copy to your project root as `CLAUDE.md` |
-| `rules/debugging-patterns.example.md` | Debugging pattern template with example entries |
-| `rules/codebase-quirks.example.md` | Codebase quirks template with example entries |
-| `rules/tech-debt-patterns.example.md` | Tech debt tracking template with example entries |
-| `rules/user-preferences.example.md` | User preferences template with example entries |
-| `rules/cross-platform-risks.example.md` | Cross-platform risk registry with anti-pattern table |
-| `sprint-overview.example.md` | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
-| `handoff.example.md` | Example `/implement` input — handoff document with goal, context, tasks, files table, success criteria, stop conditions |
-| `debug-bt-output.md` | Example `/debug-bt` output — JavaScript (console.table) and Python (terminal) test scripts with color-coded PASS/FAIL |
+| [`CLAUDE.md.example.md`](examples/CLAUDE.md.example.md) | Minimal project instructions file — copy to your project root as `CLAUDE.md` |
+| [`rules/debugging-patterns.example.md`](examples/rules/debugging-patterns.example.md) | Debugging pattern template with example entries |
+| [`rules/codebase-quirks.example.md`](examples/rules/codebase-quirks.example.md) | Codebase quirks template with example entries |
+| [`rules/tech-debt-patterns.example.md`](examples/rules/tech-debt-patterns.example.md) | Tech debt tracking template with example entries |
+| [`rules/user-preferences.example.md`](examples/rules/user-preferences.example.md) | User preferences template with example entries |
+| [`rules/cross-platform-risks.example.md`](examples/rules/cross-platform-risks.example.md) | Cross-platform risk registry with anti-pattern table |
+| [`sprint-overview.example.md`](examples/sprint-overview.example.md) | Example `/sprint` output — full structure with progress tracker, sprint map, ELI5/Deep Dive boxes, risks, dependencies |
+| [`handoff.example.md`](examples/handoff.example.md) | Example `/implement` input — handoff document with goal, context, tasks, files table, success criteria, stop conditions |
+| [`debug-bt-output.md`](examples/debug-bt-output.md) | Example `/debug-bt` output — JavaScript (console.table) and Python (terminal) test scripts with color-coded PASS/FAIL |
 
 ### Setup for a New Project
 
